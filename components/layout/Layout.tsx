@@ -1,6 +1,5 @@
-import Center from '../common/Center';
-import Footer from './Footer';
-import Header from './Header';
+import Header from '../common/Header';
+import Footer from '../common/Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,9 +7,9 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="w-full h-auto flex flex-col justify-center items-center">
+    <div className="w-full min-h-screen flex flex-col justify-between items-center">
       <Header />
-      <Center>{children}</Center>
+      <div className="w-full flex justify-center items-center">{children}</div>
       <Footer />
     </div>
   );

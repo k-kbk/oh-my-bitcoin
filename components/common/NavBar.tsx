@@ -14,12 +14,12 @@ export default function NavBar() {
       <ul className="flex">
         {navItems.map((item) => {
           return (
-            <li key={item.id} className="">
+            <li key={item.id}>
               <Link
                 href={item.href}
-                className={`font-medium text-lg ${
+                className={`font-semibold text-lg ${
                   item.href === router.asPath
-                    ? 'text-blue-500'
+                    ? 'text-blue-600'
                     : 'text-myGray text-opacity-[0.85] hover:text-black'
                 } px-6 py-3`}
               >

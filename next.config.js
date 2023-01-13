@@ -4,6 +4,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  swcMinify: true,
+  compiler: {
+    removeConsole: true,
+  },
 };
 
 module.exports = nextConfig;

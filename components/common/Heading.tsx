@@ -8,7 +8,7 @@ export default function Heading({ as, content }: HeadingProps) {
     case 'h1':
       return (
         <>
-          <h1 className="font-semibold text-3xl my-10">{content}</h1>
+          <h1 className="font-semibold text-3xl my-8">{content}</h1>
         </>
       );
     case 'h2':
