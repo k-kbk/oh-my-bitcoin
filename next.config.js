@@ -8,6 +8,7 @@ const nextConfig = {
   compiler: {
     removeConsole: true,
   },
+  transpilePackages: ['antd', 'rc-picker', 'date-fns'],
 };
 
 module.exports = nextConfig;

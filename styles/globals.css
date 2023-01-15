@@ -23,3 +23,27 @@
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
+
+.ant-picker-input input {
+  font-size: 3rem !important;
+  text-align: center !important;
+
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
+  border-radius: 0.5rem !important;
+
+  cursor: pointer !important;
+  caret-color: transparent !important;
+}
+
+.ant-picker-input input:hover {
+  background-color: rgb(226 232 240 / 1) !important;
+}
+
+.ant-picker-panel {
+  font-size: 1rem !important;
+}
+
+.ant-picker-cell-inner {
+  font-weight: 500;
+}
