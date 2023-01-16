@@ -9,22 +9,22 @@ import rocket from '../public/rocket.json';
 import 'dayjs/locale/ko';
 
 const coins = [
-  { id: 1, name: 'Qwsogvtv82FCd' },
-  { id: 2, name: '리플' },
-  { id: 3, name: '바이낸스코인' },
-  { id: 4, name: '비트코인' },
-  { id: 5, name: '이더리움' },
-  { id: 6, name: '이더리움클래식' },
-  { id: 7, name: '테더' },
+  { name: '도지코인', uuid: 'a91GCGd_u96cF' },
+  { name: '리플', uuid: '-l8Mn2pVlRs-p' },
+  { name: '바이낸스코인', uuid: 'WcwrkfNI4FUAe' },
+  { name: '비트코인', uuid: 'Qwsogvtv82FCd' },
+  { name: '이더리움', uuid: 'razxDUgYGNAdQ' },
+  { name: '이더리움클래식', uuid: 'hnfQfsYfeIGUQ' },
+  { name: '테더', uuid: 'HIVsRcGKkPFtW' },
 ];
 
 export default function Home() {
   const [date, setDate] = useState(dayjs());
-  const [coinName, setCoinName] = useState('Qwsogvtv82FCd');
+  const [coinIndex, setCoinIndex] = useState(3);
   const router = useRouter();
 
   return (
-    <main className="max-w-screen-lg w-full h-[100vh-7rem] flex flex-row justify-center items-center">
+    <main className="max-w-[52rem] w-full h-[100vh-7rem] flex flex-row justify-between items-center">
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -32,7 +32,7 @@ export default function Home() {
             pathname: '/result',
             query: {
               date: date.unix(),
-              coin: coinName,
+              coin: coins[coinIndex].uuid,
             },
           });
         }}
@@ -61,7 +61,7 @@ export default function Home() {
         <div className="py-2">
           <Menu as="div" className="text-left relative inline-block">
             <Menu.Button className="text-5xl inline-flex justify-center py-3.5 px-8 bg-slate-100 rounded-lg hover:bg-slate-200 focus:outline-none transition-colors">
-              {coinName}
+              {coins[coinIndex].name}
             </Menu.Button>
             <Transition
               as={Fragment}
@@ -74,11 +74,11 @@ export default function Home() {
             >
               <Menu.Items className="font-medium absolute left-0 z-10 w-52 mt-1 origin-top rounded-md bg-white drop-shadow-xl focus:outline-none">
                 <ul className="py-1">
-                  {coins.map((coin) => {
+                  {coins.map((coin, index) => {
                     return (
-                      <Menu.Item key={coin.id}>
+                      <Menu.Item key={index}>
                         <li
-                          onClick={() => setCoinName(coin.name)}
+                          onClick={() => setCoinIndex(index)}
                           className={
                             'font-medium text-black text-opacity-[0.88] py-2 px-4 hover:bg-gray-100'
                           }
@@ -95,7 +95,7 @@ export default function Home() {
           <span className="text-5xl"> 을</span>
         </div>
         <p className="text-5xl py-2 mb-10">샀더라면...</p>
-        <button className="text-2xl text-white max-w-xs w-full py-4 bg-blue-600 rounded-lg drop-shadow-2xl">
+        <button className="text-2xl text-white max-w-xs w-full py-4 bg-blue-600 rounded-lg drop-shadow-xl">
           얼마를 벌었을까?
         </button>
       </form>
