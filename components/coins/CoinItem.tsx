@@ -24,11 +24,16 @@ export default function CoinItem({ value }: CoinProps) {
       className="w-full h-16 flex justify-between items-center px-10 py-2 mb-3 bg-slate-50 rounded-lg drop-shadow-sm"
     >
       <p className="text-lg w-10">{rank}</p>
-      <div className="flex">
+      <div className="h-full flex">
         <div className="w-14 flex justify-center mr-2">
-          <Image src={iconUrl} alt={name} width={36} height={36} />
+          <Image
+            src={iconUrl.split('?')[0]}
+            alt={name}
+            width={36}
+            height={36}
+          />
         </div>
-        <div className="w-30">
+        <div className="w-36 flex flex-col justify-center">
           <p className="text-base">{`${name}`}</p>
           <p className="text-xs text-myGray text-opacity-[0.85] ">{symbol}</p>
         </div>
