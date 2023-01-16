@@ -9,6 +9,9 @@ const nextConfig = {
     removeConsole: true,
   },
   transpilePackages: ['antd', 'rc-picker', 'date-fns'],
+  images: {
+    domains: ['cdn.coinranking.com'],
+  },
 };
 
 module.exports = nextConfig;
