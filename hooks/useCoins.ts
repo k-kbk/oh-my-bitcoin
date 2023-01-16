@@ -9,7 +9,7 @@ export default function useCoins() {
   }
 
   return useQuery<Response, Error, CoinsResponse, Array<string>>(
-    ['test'],
+    ['coins'],
     getCoins,
   );
 }
