@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import dayjs from 'dayjs';
 import locale from 'antd/es/date-picker/locale/ko_KR';
 import Lottie from 'react-lottie-player';
-import rocket from '../public/rocket.json';
+import rocket from './public/rocket.json';
 import 'dayjs/locale/ko';
 
 const coins = [
@@ -24,21 +24,24 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="max-w-[52rem] w-full h-[100vh-7rem] flex flex-row justify-between items-center">
+    <main className="max-w-[52rem] w-full h-[100vh-7rem] flex flex-row justify-between items-center mx-10 md:mx-0">
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          router.push({
-            pathname: '/result',
-            query: {
-              date: date.unix(),
-              coin: coins[coinIndex].uuid,
+          router.push(
+            {
+              pathname: '/result',
+              query: {
+                date: date.unix(),
+                coin: coins[coinIndex].uuid,
+              },
             },
-          });
+            '/result',
+          );
         }}
         className="font-semibold w-auto mr-10 drop-shadow"
       >
-        <p className="text-5xl py-2">내가</p>
+        <p className="text-4xl md:text-5xl py-2">만약, 내가</p>
         <div className="py-2">
           <DatePicker
             locale={locale}
@@ -56,11 +59,11 @@ export default function Home() {
             onChange={(date) => setDate(date!)}
             placeholder="2023년 1월"
           />
-          <span className="text-5xl py-2"> 에</span>
+          <span className="text-4xl md:text-5xl py-2"> 에</span>
         </div>
         <div className="py-2">
           <Menu as="div" className="text-left relative inline-block">
-            <Menu.Button className="text-5xl inline-flex justify-center py-3.5 px-8 bg-slate-100 rounded-lg hover:bg-slate-200 focus:outline-none transition-colors">
+            <Menu.Button className="text-4xl md:text-5xl inline-flex justify-center py-2 md:py-3 px-4 md:px-6 bg-slate-100 rounded-lg hover:bg-slate-200 focus:outline-none transition-colors">
               {coins[coinIndex].name}
             </Menu.Button>
             <Transition
@@ -92,15 +95,20 @@ export default function Home() {
               </Menu.Items>
             </Transition>
           </Menu>
-          <span className="text-5xl"> 을</span>
+          <span className="text-4xl md:text-5xl"> 을</span>
         </div>
-        <p className="text-5xl py-2 mb-10">샀더라면...</p>
-        <button className="text-2xl text-white max-w-xs w-full py-4 bg-blue-600 rounded-lg drop-shadow-xl">
+        <p className="text-4xl md:text-5xl py-2 mb-10">샀더라면...</p>
+        <button className="text-xl md:text-2xl text-white max-w-[15rem] md:max-w-xs w-full py-4 bg-blue-600 rounded-lg drop-shadow-xl">
           얼마를 벌었을까?
         </button>
       </form>
-      <div className="ml-10 -mr-28 drop-shadow-lg">
-        <Lottie loop animationData={rocket} play className="w-112 h-112" />
+      <div className=":ml-10 -mr-18 md:-mr-28 drop-shadow-lg">
+        <Lottie
+          loop
+          animationData={rocket}
+          play
+          className="w-80 h-80 md:w-112 md:h-112"
+        />
       </div>
     </main>
   );

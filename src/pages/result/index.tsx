@@ -1,11 +1,11 @@
 import { GetServerSideProps } from 'next/types';
 import { useState } from 'react';
-import CountUp from 'react-countup';
 import dayjs from 'dayjs';
 import Lottie from 'react-lottie-player';
 import useCoin from '../../hooks/useCoin';
-import angry from '../../public/angry.json';
-import happy from '../../public/happy.json';
+import spinner from '../public/spinner.json';
+import angry from '../public/angry.json';
+import happy from '../public/happy.json';
 
 interface ResultProps {
   currentDate: string;
@@ -44,7 +44,7 @@ export default function Result({ currentDate, date, coin }: ResultProps) {
   const [isChanged, setIsChanged] = useState(false);
 
   if (targetCoinLoading || currentCoinLoading) {
-    return <div>loading...</div>;
+    return <Lottie loop animationData={spinner} play className="w-18 h-18" />;
   }
 
   const formatter = new Intl.NumberFormat('ko', {
@@ -94,26 +94,9 @@ export default function Result({ currentDate, date, coin }: ResultProps) {
         </div>
         <div className="text-[2.75rem] leading-none mt-3 mb-1">
           <span className="">오늘 약 </span>
-          {isChanged ? (
-            <span className={`${rate > 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {`${Math.round(profit / 10000).toLocaleString()}만 원`}
-            </span>
-          ) : (
-            <CountUp
-              start={0}
-              end={profit / 10000}
-              duration={1.5}
-              separator=","
-              suffix="만 원"
-            >
-              {({ countUpRef }) => (
-                <span
-                  ref={countUpRef}
-                  className={` ${rate > 0 ? 'text-green-500' : 'text-red-500'}`}
-                />
-              )}
-            </CountUp>
-          )}
+          <span className={`${rate > 0 ? 'text-green-500' : 'text-red-500'}`}>
+            {`${Math.abs(Math.round(profit / 10000)).toLocaleString()}만 원`}
+          </span>
           {rate > 0 ? (
             <>
               <span className="mr-2">을 벌었습니다!</span>
@@ -126,21 +109,9 @@ export default function Result({ currentDate, date, coin }: ResultProps) {
         </div>
         <div className="my-1">
           <span>수익률 </span>
-          <CountUp
-            start={0}
-            end={rate}
-            duration={1.5}
-            separator=","
-            prefix={rate > 0 ? '+' : ''}
-            suffix="%"
-          >
-            {({ countUpRef }) => (
-              <span
-                ref={countUpRef}
-                className={` ${rate > 0 ? 'text-green-500' : 'text-red-500'}`}
-              />
-            )}
-          </CountUp>
+          <span className={` ${rate > 0 ? 'text-green-500' : 'text-red-500'}`}>
+            {Math.round(rate) + '%'}
+          </span>
         </div>
       </article>
       <article className="w-full flex justify-between items-end mt-3 drop-shadow-sm">
@@ -149,26 +120,11 @@ export default function Result({ currentDate, date, coin }: ResultProps) {
             return (
               <div className="w-full flex justify-start items-end mb-3">
                 <span className="text-myGrayText mr-2">{item.name}</span>
-                {isChanged ? (
-                  <span className="text-3xl">
-                    {`${Math.round(
-                      Math.abs(profit / item.price),
-                    ).toLocaleString()}${item.suffix}`}
-                  </span>
-                ) : (
-                  <CountUp
-                    start={0}
-                    end={Math.abs(profit / item.price)}
-                    duration={1.5}
-                    separator=","
-                    prefix=""
-                    suffix={item.suffix}
-                  >
-                    {({ countUpRef }) => (
-                      <span ref={countUpRef} className="text-3xl" />
-                    )}
-                  </CountUp>
-                )}
+                <span className="text-3xl">
+                  {`${Math.round(
+                    Math.abs(profit / item.price),
+                  ).toLocaleString()}${item.suffix}`}
+                </span>
               </div>
             );
           })}
