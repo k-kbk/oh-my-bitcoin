@@ -8,7 +8,7 @@ export default function Document() {
         <link
           rel="preconnect"
           href="https://cdn.jsdelivr.net"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
         <link
           href="https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css"
@@ -18,7 +18,7 @@ export default function Document() {
         <link
           rel="stylesheet"
           as="style"
-          crossOrigin="true"
+          crossOrigin="anonymous"
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css"
         />
       </Head>

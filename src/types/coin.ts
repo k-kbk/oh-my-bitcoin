@@ -16,5 +16,5 @@ export interface CoinResponse {
 
 export interface CoinsResponse {
   coins: Array<Coin>;
-  stats: {};
+  stats: object;
 }

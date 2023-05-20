@@ -116,9 +116,12 @@ export default function Result({ currentDate, date, coin }: ResultProps) {
       </article>
       <article className="w-full flex justify-between items-end mt-3 drop-shadow-sm">
         <div className="font-semibold text-2xl">
-          {items.map((item) => {
+          {items.map((item, idx) => {
             return (
-              <div className="w-full flex justify-start items-end mb-3">
+              <div
+                className="w-full flex justify-start items-end mb-3"
+                key={idx}
+              >
                 <span className="text-myGrayText mr-2">{item.name}</span>
                 <span className="text-3xl">
                   {`${Math.round(
