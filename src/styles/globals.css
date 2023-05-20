@@ -2,50 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 추후 변경 */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/variable/pretendardvariable-dynamic-subset.css');
-
-* {
+*,
+html {
   /* 
     [[ font ]] 
   */
   font-family: 'Pretendard Variable', 'sans-serif';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   /* 
     [[ scroll ]]
   */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
 
 .ant-picker-input input {
-  font-size: 3rem !important;
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
   text-align: center !important;
-
+  width: 14.5rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
   --tw-bg-opacity: 1 !important;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
   border-radius: 0.5rem !important;
-
   cursor: pointer !important;
   caret-color: transparent !important;
 }
-
 .ant-picker-input input:hover {
   background-color: rgb(226 232 240 / 1) !important;
 }
-
 .ant-picker-panel {
   font-size: 1rem !important;
 }
-
 .ant-picker-cell-inner {
   font-weight: 500;
+}
+@media (min-width: 768px) {
+  .ant-picker-input input {
+    font-size: 3rem !important;
+    text-align: center !important;
+    width: 19.5rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    --tw-bg-opacity: 1 !important;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
+    caret-color: transparent !important;
+  }
 }
 
 /*
